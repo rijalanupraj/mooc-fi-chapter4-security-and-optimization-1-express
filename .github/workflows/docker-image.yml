@@ -16,6 +16,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set IMAGE_TAG env (timestamp)
+        run: echo "IMAGE_TAG=$(date +%s)" >> $GITHUB_ENV
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -24,4 +26,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: rijalanupraj/mooc-fi-chapter4-security-and-optimization-1-express:latest
+          tags: |
+            rijalanupraj/mooc-fi-chapter4-security-and-optimization-1-express:latest
+            rijalanupraj/mooc-fi-chapter4-security-and-optimization-1-express:${{ env.IMAGE_TAG }}
