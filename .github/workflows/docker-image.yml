@@ -26,6 +26,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: |
             rijalanupraj/mooc-fi-chapter4-security-and-optimization-1-express:latest
             rijalanupraj/mooc-fi-chapter4-security-and-optimization-1-express:${{ env.IMAGE_TAG }}
