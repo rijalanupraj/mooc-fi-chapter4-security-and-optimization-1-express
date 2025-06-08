@@ -30,3 +30,9 @@ jobs:
           tags: |
             rijalanupraj/mooc-fi-chapter4-security-and-optimization-1-express:latest
             rijalanupraj/mooc-fi-chapter4-security-and-optimization-1-express:${{ env.IMAGE_TAG }}
+      - name: Deploy to Render
+        uses: sws2apps/render-deployment@v1.2.0
+        with:
+          serviceId: ${{ secrets.SECRET_RENDER_SERVICE_ID }}
+          apiKey: ${{ secrets.SECRET_RENDER_API_KEY }}
+          multipleDeployment: false
